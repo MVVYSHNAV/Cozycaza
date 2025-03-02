@@ -67,8 +67,8 @@ const RoomCarousel = () => {
   };
 
   return (
-    <div className="bg-neutral-800 w-full p-8 relative">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-neutral-800 w-full h-[760px] p-8 relative">
+      <div className="max-w-4xl mx-auto mt-20">
         <div className="text-white mb-6">
           <h2 className="text-2xl font-bold mb-1">Explore Your Room</h2>
           <p className="text-xl font-light">Find Rooms Based on Interests</p>

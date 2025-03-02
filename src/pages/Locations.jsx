@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
-import locimg1 from '../assets/images/locimg1.png';
-import locimg2 from '../assets/images/locimg2.png';
-import locimg3 from '../assets/images/locimg3.png';
-import locimg4 from '../assets/images/locimg4.png';
+import locimg1 from '../assets/images/locimg1.jpg';
+import locimg2 from '../assets/images/locimg2.jpg';
+import locimg3 from '../assets/images/locimg3.jpg';
+import locimg4 from '../assets/images/locimg4.jpg';
 
 const Locations = () => {
   const [selectedDestination, setSelectedDestination] = useState(null);
 
   const destinations = [
     {
-      id: 1,
-      title: "Mountain Dam",
-      image: locimg1,
-      description: "A magnificent dam nestled between mountains, where engineering meets nature. The powerful flow of water creates a mesmerizing spectacle for visitors.",
-      activities: ["Sightseeing", "Photography", "Hiking"],
-      bestTime: "Early morning or late afternoon"
-    },
-    {
-      id: 2,
-      title: "Lakeside Pavilions",
-      image: locimg2,
-      description: "Tranquil pavilions on the serene lake provide perfect spots for relaxation and contemplation. Surrounded by lush greenery, this destination offers peace away from busy life.",
-      activities: ["Boating", "Meditation", "Picnic"],
-      bestTime: "Midday for best lighting"
-    },
-    {
-      id: 3,
-      title: "Cloud Valley",
-      image: locimg3,
-      description: "Stand above the clouds and witness nature's most breathtaking phenomenon. This viewpoint allows visitors to experience walking among clouds.",
-      activities: ["Trekking", "Cloud watching", "Group tours"],
-      bestTime: "Early morning for cloud formation"
-    },
-    {
-      id: 4,
-      title: "Forest Waterfall",
-      image: locimg4,
-      description: "A majestic waterfall hidden within the dense forest, offering a refreshing escape. The sound of rushing water creates a natural symphony.",
-      activities: ["Swimming", "Nature walks", "Photography"],
-      bestTime: "Rainy season for maximum flow"
-    }
+        id: 1,
+        title: "Banasura Sagar Dam",
+        image: locimg1,
+        description: "The largest earthen dam in India, surrounded by misty hills and crystal-clear waters. A paradise for nature lovers and adventure seekers.",
+        activities: ["Boating", "Trekking", "Nature Photography"],
+        bestTime: "September to May (Pleasant weather)"
+      },
+      {
+        id: 2,
+        title: "Karlad Lake",
+        image: locimg2,
+        description: "A serene freshwater lake ideal for adventure activities and peaceful retreats. Surrounded by lush greenery, perfect for unwinding.",
+        activities: ["Kayaking", "Zip-lining", "Picnic"],
+        bestTime: "October to March (Cool and pleasant climate)"
+      },
+      {
+        id: 3,
+        title: "Kurumbalakotta Hill",
+        image: locimg3,
+        description: "A stunning 360-degree viewpoint offering breathtaking sunrise and sunset views. Famous for trekking and experiencing floating clouds.",
+        activities: ["Trekking", "Camping", "Sunrise Viewing"],
+        bestTime: "Early morning or evening (For best views and cool climate)"
+      },
+      {
+        id: 4,
+        title: "Meenmutty Waterfalls",
+        image: locimg4,
+        description: "One of the tallest waterfalls in Kerala, cascading through three tiers. A trekker’s delight with a thrilling jungle trail leading to the falls.",
+        activities: ["Trekking", "Waterfall Viewing", "Photography"],
+        bestTime: "Post-monsoon (September to February) for lush greenery and water flow"
+      }
   ];
 
   const handleCardClick = (destination) => {
@@ -87,63 +87,64 @@ const Locations = () => {
         ))}
       </div>
 
-      {selectedDestination && (
+      
+        {selectedDestination && (
         <div 
-          id="modal-overlay"
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" 
-          onClick={handleClose}
+            id="modal-overlay"
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" 
+            onClick={handleClose} // Close when clicking outside modal
         >
-          <div 
-            className="bg-white max-w-3xl w-full rounded-xl overflow-hidden shadow-2xl relative"
-            onClick={(e) => e.stopPropagation()}
-          >
+            <div 
+            className="bg-white max-w-3xl w-full rounded-xl overflow-hidden shadow-2xl relative pointer-events-auto"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            >
             <div className="relative h-64 md:h-80">
-              <img
+                <img
                 src={selectedDestination.image}
                 alt={selectedDestination.title}
                 className="w-full h-full object-cover"
-              />
-              <button
+                />
+                <button
                 className="absolute top-4 right-4 bg-black/50 p-2 rounded-full text-white hover:bg-black/80 transition-colors"
-                onClick={() => setSelectedDestination(null)}
+                onClick={() => setSelectedDestination(null)} // Close when clicking the button
                 aria-label="Close"
-              >
+                >
                 <X size={20} />
-              </button>
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-6">
+                </button>
+                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-end p-6">
                 <h2 className="text-white text-3xl font-medium">{selectedDestination.title}</h2>
-              </div>
+                </div>
             </div>
 
             <div className="p-6">
-              <p className="text-gray-800 text-lg mb-6">{selectedDestination.description}</p>
+                <p className="text-gray-800 text-lg mb-6">{selectedDestination.description}</p>
 
-              <div className="mb-4">
+                <div className="mb-4">
                 <h4 className="text-lg font-medium text-gray-900 mb-2">Activities</h4>
                 <div className="flex flex-wrap gap-2">
-                  {selectedDestination.activities.map((activity, index) => (
+                    {selectedDestination.activities.map((activity, index) => (
                     <span key={index} className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
-                      {activity}
+                        {activity}
                     </span>
-                  ))}
+                    ))}
                 </div>
-              </div>
+                </div>
 
-              <div>
+                <div>
                 <h4 className="text-lg font-medium text-gray-900 mb-2">Best Time to Visit</h4>
                 <p className="text-gray-700">{selectedDestination.bestTime}</p>
-              </div>
+                </div>
 
-              <button
-                className="mt-8 w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                <button
+                className="mt-8 w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-700 transition-colors"
                 aria-label="Plan Your Visit"
-              >
+                >
                 Plan Your Visit
-              </button>
+                </button>
             </div>
-          </div>
+            </div>          
         </div>
-      )}
+        )}
     </section>
   );
 };
